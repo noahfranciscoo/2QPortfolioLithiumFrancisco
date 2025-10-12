@@ -25,7 +25,7 @@
             color: white;
             text-align: center;
             padding: 20px;
-            
+
 
         }
 
@@ -35,13 +35,7 @@
             display: block;
             margin: 0 auto 10px auto;
         }
-
-        footer {
-            background-color: #00205B;
-            color: white;
-            text-align: center;
-            padding: 20px;
-        }
+        
 
         nav {
             background-color: #94a8d7;
@@ -87,14 +81,27 @@
             padding: 8px;
             text-align: center;
         }
-
-        footer a {
-            color: white;
-            margin: 0 10px;
-        }
-
+ 
         p {
             font-size: 20px;
+        }
+
+        footer {
+            background-color: #00205B;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            font-size: 16px;
+        }
+
+        footer a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
         }
     </style>
 </head>
@@ -143,7 +150,7 @@
             </p>
         </section>
 
-        <img src="assets/ateneo_campus.jpg" alt="Ateneo Campus" width="600">
+        <img src="assets/ateneo_campus.jpg" alt="Ateneo Campus" width="500" style="display: block; margin: 0 auto;">
 
         <h2>Core Values</h2>
         <p>Ateneo’s education is built around Jesuit principles that shape its students into compassionate leaders and responsible citizens. Its core values include:</p>
@@ -197,16 +204,24 @@
             <li><strong>Pasig Campus</strong>: The Ateneo School of Medicine and Public Health.</li>
         </ul>
 
-        <p>A tour of the campus:</p>
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/iGtoi5XxVcU"
-         title="Ateneo Cinematic Tour" frameborder="0" allowfullscreen></iframe>
+        <p style="text-align: center;">A tour of the campus:</p>
+
+        <iframe 
+          width="560" 
+          height="315" 
+          src="https://www.youtube.com/embed/iGtoi5XxVcU"
+          title="Ateneo Cinematic Tour"
+          frameborder="0"
+          allowfullscreen
+          style="display: block; margin: 0 auto; border-radius: 15px; overflow: hidden;">
+        </iframe>
     </main>
 
     <footer>
         <p>© 2025 The Big 4 Universities Website | All Rights Reserved</p>
         <p>
-            <a href="https://www.ateneo.edu/">Official Ateneo Website</a> |
-            <a href="https://www.facebook.com/TheAteneo/">Ateneo Facebook Page</a>
+            <a href="https://www.ateneo.edu/" target="_blank">Official Ateneo Website</a> |
+            <a href="https://www.facebook.com/TheAteneo/" target="_blank">Ateneo Facebook Page</a>
         </p>
     </footer>
 </body>
