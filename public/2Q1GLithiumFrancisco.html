@@ -10,53 +10,76 @@
     <title>The Big 4: Ateneo de Manila University</title>
     <link rel="icon" href="assets/ateneo_logo.png" sizes="32x32" type="image/png">
 
+
+    <link rel="stylesheet" href="style.css">
+
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
-    <meta name="description" content="Ateneo de Manila University, Part of the Big 4 Universities in the Philippines">
+
     <style>
         body {
-            font-family: 'Roboto', sans-serif;
+
             margin: 0;
             background-color: #f5f8ff;
             color: #00205B;
         }
+
         header {
             background-color: #00205B;
             color: white;
             text-align: center;
             padding: 20px;
         }
+
         nav {
             background-color: #94a8d7;
             text-align: center;
             padding: 12px;
         }
 
-        nav a {
+        nav a:link {
             color: #00205B;
             margin: 0 15px;
             text-decoration: none;
             font-weight: bold;
         }
 
-        nav a:hover {
-            text-decoration: underline;
+        nav a:visited {
+            color: #4b0082;
         }
 
-        nav span {
-            color: #00205B;
-            margin: 0 15px;
-            font-weight: bold;
-            text-decoration: underline;
+        nav a:hover {
+            color: #ffffff;
+            background-color: #00205B;
+            border-radius: 5px;
+            padding: 5px 10px;
+            transition: 0.3s;
         }
 
         main {
             padding: 20px;
         }
 
-        img {
-            max-width: 100%;
-            border-radius: 8px;
+        .history {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: flex-start;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .history img {
+            width: 40%;
+            min-width: 260px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .history p {
+            flex: 1;
+            font-size: 18px;
+            line-height: 1.6;
+            text-align: justify;
         }
 
         table {
@@ -69,14 +92,7 @@
             border: 1px solid #00205B;
             padding: 8px;
             text-align: center;
-        }
-        footer a {
-            color: white;
-            margin: 0 10px;
-        }
-        p {
-            font-size: 20px;
-        }
+        } 
 
         footer {
             background-color: #00205B;
@@ -86,17 +102,23 @@
             font-size: 16px;
         }
 
-        footer a {
+        footer a:link {
             color: #ffffff;
             text-decoration: none;
             font-weight: bold;
         }
 
+        footer a:visited {
+            color: #ffffff;
+        }
+
         footer a:hover {
+            color: #f5f8ff;
             text-decoration: underline;
         }
     </style>
 </head>
+
 <body>
     <header>
         <img src="assets/ateneo_logo.png" alt="Ateneo Seal" width="160" height="160">
@@ -114,52 +136,55 @@
     <main>
         <h1 style="text-align: center;">Ateneo de Manila University</h1>
 
-        <section>
-            <h2>Short History</h2>
-            <p>
-                Ateneo de Manila University was founded in 1859 by the Society of Jesus (Jesuits).
-                Originally located in Intramuros, it began as the <em>Escuela Municipal de Manila</em>,
-                which was the only primary school in the city at the time. In 1865, it was renamed
-                <em>Ateneo Municipal de Manila</em>, and in the same year, secondary education was
-                introduced. During this time, Ateneo was one of the top schools in the Philippines competing with UST.
-                When American colonial rule began in 1902, the Ateneo Municipal lost its
-                government subsidy. This worsened the quality of education the school was giving.
-            </p>
-            <p>
-                By 1908, the government recognized it as a college authorized to offer bachelor’s
-                degrees and certificates in various fields, including electrical engineering.
-                A year later, in 1909, the Jesuits officially removed the word “Municipal” from its
-                name, and it has since been known as <em>Ateneo de Manila</em>. American Jesuits
-                took administration in 1921, as a result of the Spanish being "exiled".
-            </p>
-            <p>
-                During World War II, much of Ateneo was destroyed, with only one structure surviving,
-                the statue of St. Joseph and the Child Jesus. After the war, the remaining structures
-                were salvaged, and in 1952, the campus was rebuilt in Loyola Heights, which is now
-                the largest of the four campuses, being 83 hectares big, ranking as the 8th largest university in the Philippines.
-                Over time, three additional campuses were established within the National Capital Region (NCR).
-                Currently, Ateneo ranks 511th among all major universities around the world.
-            </p>
-        </section>
-
-        <img src="assets/ateneo_campus.jpg" alt="Ateneo Campus" width="500" style="display: block; margin: 0 auto;">
+        <!-- Flexbox section -->
+        <section class="history">
+            <img src="assets/ateneo_campus.jpg" alt="Ateneo Campus">
+            <div>
+                <h2>Short History</h2>
+                <p>
+                    Ateneo de Manila University was founded in 1859 by the Society of Jesus (Jesuits).
+                    Originally located in Intramuros, it began as the <em>Escuela Municipal de Manila</em>,
+                    which was the only primary school in the city at the time. In 1865, it was renamed
+                    <em>Ateneo Municipal de Manila</em>, and in the same year, secondary education was
+                    introduced. During this time, Ateneo was one of the top schools in the Philippines competing with UST.
+                    When American colonial rule began in 1902, the Ateneo Municipal lost its
+                    government subsidy. This worsened the quality of education the school was giving.
+                </p>
+                <p>
+                    By 1908, the government recognized it as a college authorized to offer bachelor’s
+                    degrees and certificates in various fields, including electrical engineering.
+                    A year later, in 1909, the Jesuits officially removed the word “Municipal” from its
+                    name, and it has since been known as <em>Ateneo de Manila</em>. American Jesuits
+                    took administration in 1921, as a result of the Spanish being "exiled".
+                </p>
+                <p>
+                    During World War II, much of Ateneo was destroyed, with only one structure surviving,
+                    the statue of St. Joseph and the Child Jesus. After the war, the remaining structures
+                    were salvaged, and in 1952, the campus was rebuilt in Loyola Heights, which is now
+                    the largest of the four campuses, being 83 hectares big, ranking as the 8th largest university in the Philippines.
+                    Over time, three additional campuses were established within the National Capital Region (NCR).
+                    Currently, Ateneo ranks 511th among all major universities around the world.
+                </p>
+            </div>
+        </section> 
 
         <h2>Core Values</h2>
         <p>Ateneo’s education is built around Jesuit principles that shape its students into compassionate leaders and 
             responsible citizens. Its core values include:</p>
         <ul>
             <li><strong>Magis</strong>: This is a core Ignatian value that encourages a desire to do "more" for God and for the 
-                service of others. Its about being excellent and giving your best. </li>
-            <li><strong>Ad Majorem Dei Gloriam (AMDG)</strong>: St Ignatius of Loyala popularized this, and it essiently stands for 
+                service of others. It's about being excellent and giving your best. </li>
+            <li><strong>Ad Majorem Dei Gloriam (AMDG)</strong>: St. Ignatius of Loyola popularized this, and it stands for 
                 doing all things for the greater glory of God.</li>
             <li><strong>Men and Women for Others</strong>: A commitment to serve others and contribute to nation-building. This
                  Core Value is mainly for Ateneo de Manila University students, and isn't taught to students under AGS, AJHS, ASHS.</li>
             <li><strong>7C's</strong>: The 7 C's stand for Christ Centered, Competence, Conscience, Character, Compassion, 
-                Community, and Culture. Every Atenean, from Kinder to University Student, must have these characteristics/values.</li>
+                Community, and Culture. Every Atenean, from Kinder to University Student, must have these values.</li>
         </ul>
 
         <h2>Popular Majors</h2>
         <p>Ateneo offers a wide variety of courses in liberal arts, business, and sciences. Here are some of its most popular and competitive programs:</p>
+
         <table>
             <tr>
                 <th rowspan="2">School</th>
@@ -192,7 +217,7 @@
         </table>
 
         <h2>Campuses</h2>
-        <p>Ateneo operates several campuses across Metro Manila:</p>
+
         <ul>
             <li><strong>Loyola Heights Campus</strong>: The main campus, housing most undergraduate and graduate programs.</li>
             <li><strong>Rockwell Campus</strong>: Home to the Ateneo Graduate School of Business.</li>
@@ -200,7 +225,7 @@
             <li><strong>Pasig Campus</strong>: The Ateneo School of Medicine and Public Health.</li>
         </ul>
 
-        <p style="text-align: center;">A  cinematic tour of the campus:</p>
+        <p style="text-align: center;">A cinematic tour of the campus:</p>
 
         <iframe 
           width="560" 
