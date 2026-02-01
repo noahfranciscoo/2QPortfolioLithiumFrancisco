@@ -1,0 +1,144 @@
+body {
+    font-family: "Poppins", sans-serif;
+    background-color: #f3fff7;
+    color: #2f4f3a;
+}
+
+h1, h2 {
+    text-align: center;
+    color: #4caf50;
+    font-weight: 700;
+}
+
+form, .viewer-container {
+    width: 60%;
+    margin: 30px auto;
+    background-color: #ffffff;
+    padding: 25px;
+    border-radius: 15px;
+    box-shadow: 0 0 15px rgba(144, 238, 144, 0.5);
+    border: 3px solid #b6e6c1;
+}
+
+.viewer-container {
+    width: 90%;
+}
+
+fieldset {
+    border: 2px dashed #9ad8a5;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+legend {
+    font-weight: 600;
+    color: #388e3c;
+}
+
+label {
+    display: block;
+    margin-bottom: 12px;
+    font-weight: 500;
+}
+
+input, select, textarea {
+    width: 95%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 8px;
+    border: 1px solid #9ad8a5;
+    font-size: 14px;
+    background-color: #f8fffa;
+    font-family: "Poppins", sans-serif;
+}
+
+textarea {
+    resize: none;
+    height: 80px;
+}
+
+input:focus, select:focus, textarea:focus {
+    outline: none;
+    border: 2px solid #4caf50;
+    background-color: #ecfff1;
+}
+
+.invalid {
+    border: 2px solid #ff8a80;
+    background-color: #fff1f0;
+}
+
+.radio-group label {
+    display: inline-block;
+    width: auto;
+    margin-right: 15px;
+    font-weight: 400;
+}
+
+.buttons {
+    text-align: center;
+}
+
+button, .view-btn {
+    padding: 10px 20px;
+    margin: 10px;
+    border: none;
+    border-radius: 10px;
+    background-color: #4caf50;
+    color: white;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.25s ease;
+    font-family: "Poppins", sans-serif;
+}
+
+button:hover, .view-btn:hover {
+    background-color: #388e3c;
+    transform: scale(1.05);
+}
+
+.view-btn {
+    background-color: #2196F3;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th {
+    background-color: #2f4f3a;
+    color: white;
+    padding: 12px;
+    text-align: center;
+}
+
+td {
+    border: 1px solid #9ad8a5;
+    padding: 10px;
+    text-align: center;
+}
+
+tr:nth-child(even) {
+    background-color: #f8fffa;
+}
+
+.no-data-msg {
+    text-align: center;
+    padding: 20px;
+    border: 1px solid #2f4f3a;
+    margin-top: 20px;
+    font-weight: 600;
+    color: #388e3c;
+}
+
+.back-link {
+    display: inline-block;
+    margin-bottom: 20px;
+    color: #4caf50;
+    text-decoration: none;
+    font-weight: 600;
+}

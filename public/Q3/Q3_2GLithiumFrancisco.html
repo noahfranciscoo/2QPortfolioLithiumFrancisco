@@ -1,121 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-        <meta charset="UTF-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Club Application Form">
-    <meta name="keywords" content="Club, Philippine Science Highschool, Philippines">
     <meta name="author" content="Noah Connor C. Francisco">
     <title>Club Application Form</title>
     <link rel="icon" type="image/jpg" href="../public/assets/430-4305671_pshs-logo-philippine-science-high-school-logo.png">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css.css">
+</head>
+<body>
 
-  <style>
-    body {
-        font-family: "Poppins", sans-serif;
-        background-color: #f3fff7;
-        color: #2f4f3a;
+<h1>Club Application</h1>
+<h2>Join the Different Organizations!</h2>
+
+<form id="clubForm">
+    <fieldset>
+        <legend>Student Information</legend>
+        <label>Student ID: <input type="number" id="studentID" required onblur="checkEmpty(this)"></label>
+        <label>Full Name: <input type="text" id="fullName" required onblur="checkEmpty(this)"></label>
+        <label>Birthday: <input type="date" id="birthday" required></label>
+        <label>Email Address: <input type="email" id="email" required onblur="checkEmpty(this)"></label>
+    </fieldset>
+
+    <fieldset>
+        <legend>Membership Details</legend>
+        <label>Phone Number: <input type="text" id="mobile" required onblur="checkEmpty(this)"></label>
+        <label>Grade:
+            <select id="grade" required>
+                <option value="">-- Select Grade --</option>
+                <option value="Grade 7">Grade 7</option>
+                <option value="Grade 8">Grade 8</option>
+                <option value="Grade 9">Grade 9</option>
+                <option value="Grade 10">Grade 10</option>
+                <option value="Grade 11">Grade 11</option>
+                <option value="Grade 12">Grade 12</option>
+            </select>
+        </label>
+
+        <label>Intern / Extern:</label>
+        <div class="radio-group">
+            <label><input type="radio" name="status" value="Intern" required> Intern</label>
+            <label><input type="radio" name="status" value="Extern" required> Extern</label>
+        </div>
+
+        <label>Preferred Club:
+            <select id="clubChoice" required>
+                <option value="">-- Choose a Club --</option>
+                <option value="Volant">Volant</option>
+                <option value="Invictus">Invictus</option>
+                <option value="MUN">MUN</option>
+                <option value="AstroSoc">AstroSoc</option>
+                <option value="AKSIS">AKSIS</option>
+                <option value="Pallastro">Pallastro</option>
+            </select>
+        </label>
+
+        <label>Why do you want to join? <textarea id="motivation" required onblur="checkEmpty(this)"></textarea></label>
+    </fieldset>
+
+    <div class="buttons">
+        <button type="submit">Submit Application</button>
+        <button type="reset" onclick="return confirmReset()">Reset Form</button>
+        <button type="button" class="view-btn" onclick="window.location.href='viewSignUps.html'">View Signups</button>
+    </div>
+</form>
+
+<script>
+    const KEY = 'clubSignups';
+
+    function loadSignups() {
+        const raw = localStorage.getItem(KEY);
+        if (raw) return JSON.parse(raw);
+        return [];
     }
 
-    form {
-        width: 60%;
-        margin: 30px auto;
-        background-color: #ffffff;
-        padding: 25px;
-        border-radius: 15px;
-        box-shadow: 0 0 15px rgba(144, 238, 144, 0.5);
-        border: 3px solid #b6e6c1;
-    }
-
-    h1, h2 {
-        text-align: center;
-        color: #4caf50;
-        font-weight: 700;
-    }
-
-    fieldset {
-        border: 2px dashed #9ad8a5;
-        border-radius: 12px;
-        padding: 20px;
-        margin-bottom: 20px;
-    }
-
-    legend {
-        font-weight: 600;
-        color: #388e3c;
-    }
-
-    label {
-        display: block;
-        margin-bottom: 12px;
-        font-weight: 500;
-    }
-
-    input, select, textarea {
-        width: 95%;
-        padding: 8px;
-        margin-top: 5px;
-        border-radius: 8px;
-        border: 1px solid #9ad8a5;
-        font-size: 14px;
-        background-color: #f8fffa;
-        font-family: "Poppins", sans-serif;
-    }
-
-    textarea {
-        resize: none;
-        height: 80px;
-    }
-
-    input:focus, select:focus, textarea:focus {
-        outline: none;
-        border: 2px solid #4caf50;
-        background-color: #ecfff1;
-    }
-
-    .invalid {
-        border: 2px solid #ff8a80;
-        background-color: #fff1f0;
-    }
-
-    .radio-group label {
-        display: inline-block;
-        width: auto;
-        margin-right: 15px;
-        font-weight: 400;
-    }
-
-    .buttons {
-        text-align: center;
-    }
-
-    button {
-        padding: 10px 20px;
-        margin: 10px;
-        border: none;
-        border-radius: 10px;
-        background-color: #4caf50;
-        color: white;
-        font-size: 15px;
-        font-weight: 600;
-        cursor: pointer;
-        transition: background-color 0.2s ease, transform 0.2s ease;
-        font-family: "Poppins", sans-serif;
-    }
-
-    button:hover {
-        background-color: #388e3c;
-        transform: scale(1.05);
-    }
-  </style>
-
-  <script>
-    function confirmSubmit() {
-        return confirm("Are you sure you want to submit your club application?");
-    }
-
-    function confirmReset() {
-        return confirm("Do you really want to reset all the form information?");
+    function saveSignups(entries) {
+        localStorage.setItem(KEY, JSON.stringify(entries));
     }
 
     function checkEmpty(element) {
@@ -125,96 +86,35 @@
             element.classList.remove("invalid");
         }
     }
-  </script>
-</head>
 
-<body>
+    function confirmReset() {
+        return confirm("Do you really want to reset all the form information?");
+    }
 
-<h1>Club Application</h1>
-<h2>Join the Different Organizations!</h2>
+    const clubForm = document.getElementById('clubForm');
+    clubForm.onsubmit = function(event) {
+        event.preventDefault();
+        if (!confirm("Are you sure you want to submit your club application?")) return;
 
-<form method="post" action="submit" onsubmit="return confirmSubmit()" onreset="return confirmReset()">
+        const obj = {
+            id: document.getElementById('studentID').value.trim(),
+            fullname: document.getElementById('fullName').value.trim(),
+            birthday: document.getElementById('birthday').value,
+            email: document.getElementById('email').value.trim(),
+            mobile: document.getElementById('mobile').value.trim(),
+            grade: document.getElementById('grade').value,
+            status: document.querySelector('input[name="status"]:checked').value,
+            club: document.getElementById('clubChoice').value,
+            time: new Date().toLocaleTimeString()
+        };
 
-    <fieldset>
-        <legend>Student Information</legend>
-
-        <label>
-            Student ID:
-            <input type="number" required onblur="checkEmpty(this)">
-        </label>
-
-        <label>
-            Full Name:
-            <input type="text" required onblur="checkEmpty(this)">
-        </label>
-
-        <label>
-            Birthday:
-            <input type="date" required>
-        </label>
-
-        <label>
-            Email Address:
-            <input type="email" required onblur="checkEmpty(this)">
-        </label>
-    </fieldset>
-
-    <fieldset>
-        <legend>Membership Details</legend>
-
-        <label>
-            <P>Phone Numnber</P>:
-            <input type="text" required onblur="checkEmpty(this)">
-        </label>
-
-        <label>
-            Grade:
-            <select required>
-                <option value="">-- Select Grade --</option>
-                <option value="g7">Grade 7</option>
-                <option value="g8">Grade 8</option>
-                <option value="g9">Grade 9</option>
-                <option value="g10">Grade 10</option>
-                <option value="g11">Grade 11</option>
-                <option value="g12">Grade 12</option>
-            </select>
-        </label>
-
-        <label>Intern / Extern:</label>
-        <div class="radio-group">
-            <label>
-                <input type="radio" name="status" value="internal_member" required> Intern
-            </label>
-            <label>
-                <input type="radio" name="status" value="external_member" required> Extern
-            </label>
-        </div>
-
-        <label>
-            Preferred Club:
-            <select required>
-                <option value="">-- Choose a Club --</option>
-                <option value="badminton_club">Volant</option>
-                <option value="debate_club">Invictus</option>
-                <option value="geopolitics_club">MUN</option>
-                <option value="astronomy_club">AstroSoc</option>
-                <option value="volunteer_club">AKSIS</option>
-                <option value="basketball_club">Pallastro</option>
-            </select>
-        </label>
-
-        <label>
-            Why do you want to join?
-            <textarea required onblur="checkEmpty(this)"></textarea>
-        </label>
-    </fieldset>
-
-    <div class="buttons">
-        <button type="submit">Submit Application</button>
-        <button type="reset">Reset Form</button>
-    </div>
-
-</form>
-
+        const signups = loadSignups();
+        signups.push(obj);
+        saveSignups(signups);
+        
+        alert("Application Saved Successfully.");
+        clubForm.reset();
+    };
+</script>
 </body>
 </html>

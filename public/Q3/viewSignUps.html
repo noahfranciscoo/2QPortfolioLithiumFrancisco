@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Noah Connor C. Francisco">
+    <title>Club Statistics</title>
+    <link rel="icon" type="image/jpg" href="../public/assets/430-4305671_pshs-logo-philippine-science-high-school-logo.png">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css.css">
+</head>
+<body>
+
+<div class="viewer-container">
+    <h1>Show List of Students Who Signed-Up</h1>
+    <h2>by Noah Connor C. Francisco</h2>
+
+    <a href="../Q3/Q3_2GLithiumFrancisco.html" class="back-link">Back to Signup</a>
+
+    <div style="margin-bottom: 20px;">
+        <label>Select Your Club:</label>
+        <select id="clubFilter" onchange="render()" style="width: auto;">
+            <option value="ALL">ALL</option>
+            <option value="Volant">Volant</option>
+            <option value="Invictus">Invictus</option>
+            <option value="MUN">MUN</option>
+            <option value="AstroSoc">AstroSoc</option>
+            <option value="AKSIS">AKSIS</option>
+            <option value="Pallastro">Pallastro</option>
+        </select>
+    </div>
+
+    <p>Total Signup: <span id="totalCount" style="font-weight: 700;">0</span></p>
+    <div id="displayArea"></div>
+</div>
+
+<script>
+    const KEY = 'clubSignups';
+
+    function loadSignups() {
+        const raw = localStorage.getItem(KEY);
+        return raw ? JSON.parse(raw) : [];
+    }
+
+    function escapeHtml(s) {
+        let str = String(s);
+        let escapedStr = "";
+        for (let i = 0; i < str.length; i++) {
+            let c = str[i];
+            if (c === '&') escapedStr += '&amp;';
+            else if (c === '<') escapedStr += '&lt;';
+            else if (c === '>') escapedStr += '&gt;';
+            else if (c === '"') escapedStr += '&quot;';
+            else if (c === "'") escapedStr += '&#39;';
+            else escapedStr += c;
+        }
+        return escapedStr;
+    }
+
+    function render() {
+        const signups = loadSignups();
+        const displayArea = document.getElementById('displayArea');
+        const totalCountSpan = document.getElementById('totalCount');
+        const filter = document.getElementById('clubFilter').value;
+
+        if (signups.length === 0) {
+            displayArea.innerHTML = '<div class="no-data-msg">No data saved in localStorage.</div>';
+            totalCountSpan.textContent = "0";
+            return;
+        }
+
+        let output = `<table><thead><tr>
+            <th>Club</th><th>ID</th><th>Fullname</th>
+            <th>Grade</th><th>Email</th><th>Mobile</th>
+            <th>Intern|Extern</th>
+        </tr></thead><tbody>`;
+        
+        let count = 0;
+        for (let i = 0; i < signups.length; i++) {
+            const entry = signups[i];
+            if (filter === "ALL" || entry.club === filter) {
+                count++;
+                output += `<tr>
+                    <td>${escapeHtml(entry.club)}</td>
+                    <td>${escapeHtml(entry.id)}</td>
+                    <td>${escapeHtml(entry.fullname)}</td>
+                    <td>${escapeHtml(entry.grade)}</td>
+                    <td>${escapeHtml(entry.email)}</td>
+                    <td>${escapeHtml(entry.mobile)}</td>
+                    <td>${escapeHtml(entry.status)}</td>
+                </tr>`;
+            }
+        }
+        output += "</tbody></table>";
+        totalCountSpan.textContent = count;
+
+        if (count === 0) {
+             displayArea.innerHTML = `<div class="no-data-msg">No Sign Ups For The Club: ${filter} :(</div>`;
+        } else {
+             displayArea.innerHTML = output;
+        }
+    }
+    window.onload = render;
+</script>
+</body>
+</html>
