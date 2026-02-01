@@ -67,35 +67,48 @@
 </form>
 
 <script>
+// This is the name used to save data in the browser
     const KEY = 'clubSignups';
 
+    // This function gets the list of people who signed up from the browser
     function loadSignups() {
         const raw = localStorage.getItem(KEY);
+        // If there is data, turn it into a list; if not, start with an empty list
         if (raw) return JSON.parse(raw);
         return [];
     }
 
+    // This function saves the list of people back into the browser
     function saveSignups(entries) {
         localStorage.setItem(KEY, JSON.stringify(entries));
     }
 
+    // This function checks if a box is empty when you click away from it
     function checkEmpty(element) {
         if (element.value.trim() === "") {
-            element.classList.add("invalid");
+            element.classList.add("invalid"); // Makes the box look "bad" if empty
         } else {
-            element.classList.remove("invalid");
+            element.classList.remove("invalid"); // Makes it look normal if not empty
         }
     }
 
+    // This function pops up a box to make sure you want to clear the form
     function confirmReset() {
         return confirm("Do you really want to reset all the form information?");
     }
 
+    // We find the form on the page so we can watch for when it is submitted
     const clubForm = document.getElementById('clubForm');
+
+    // This runs when you click the "Submit" button
     clubForm.onsubmit = function(event) {
+        // dis stops the page from refreshing automatically
         event.preventDefault();
+
+        // asks the user one last time if they want to join
         if (!confirm("Are you sure you want to submit your club application?")) return;
 
+        // Collect everything the user typed into one single group
         const obj = {
             id: document.getElementById('studentID').value.trim(),
             fullname: document.getElementById('fullName').value.trim(),
@@ -105,13 +118,19 @@
             grade: document.getElementById('grade').value,
             status: document.querySelector('input[name="status"]:checked').value,
             club: document.getElementById('clubChoice').value,
-            time: new Date().toLocaleTimeString()
+            time: new Date().toLocaleTimeString() // Saves the current time
         };
 
+        // Get the old list of signups
         const signups = loadSignups();
+
+        // Add the new person to that list
         signups.push(obj);
+
+        // Save the updated list back into the browser
         saveSignups(signups);
         
+        // Tell the user it worked and clear the form boxes
         alert("Application Saved Successfully.");
         clubForm.reset();
     };

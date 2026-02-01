@@ -35,13 +35,17 @@
 </div>
 
 <script>
+// The key name used to store and retrieve data from the browser's localStorage
     const KEY = 'clubSignups';
 
+    // Loads the data from localStorage and converts it from a JSON string back into a JavaScript array
     function loadSignups() {
         const raw = localStorage.getItem(KEY);
+        // If data exists, parse it; otherwise, return an empty array
         return raw ? JSON.parse(raw) : [];
     }
 
+    // Security function: Replaces special characters with HTML entities to prevent malicious script injection (XSS)
     function escapeHtml(s) {
         let str = String(s);
         let escapedStr = "";
@@ -57,27 +61,34 @@
         return escapedStr;
     }
 
+    // The main function that handles filtering the data and displaying it on the page
     function render() {
-        const signups = loadSignups();
+        const signups = loadSignups(); // Get  list of students
         const displayArea = document.getElementById('displayArea');
         const totalCountSpan = document.getElementById('totalCount');
-        const filter = document.getElementById('clubFilter').value;
+        const filter = document.getElementById('clubFilter').value; // Get the selected club from the dropdown
 
+        // If no one has signed up yet it show a "no data" message
         if (signups.length === 0) {
             displayArea.innerHTML = '<div class="no-data-msg">No data saved in localStorage.</div>';
             totalCountSpan.textContent = "0";
             return;
         }
 
+        // Initialize the table header string
         let output = `<table><thead><tr>
             <th>Club</th><th>ID</th><th>Fullname</th>
             <th>Grade</th><th>Email</th><th>Mobile</th>
             <th>Intern|Extern</th>
         </tr></thead><tbody>`;
         
-        let count = 0;
+        let count = 0; // To keep track of how many students match the filter
+        
+        // Loop through every signup entry
         for (let i = 0; i < signups.length; i++) {
             const entry = signups[i];
+            
+            // If "ALL" is selected, or if the student's club matches the filter, add them to the table
             if (filter === "ALL" || entry.club === filter) {
                 count++;
                 output += `<tr>
@@ -91,15 +102,19 @@
                 </tr>`;
             }
         }
-        output += "</tbody></table>";
-        totalCountSpan.textContent = count;
+        
+        output += "</tbody></table>"; // Close the table tags
+        totalCountSpan.textContent = count; // Update the "Total Signup" number on screen
 
+        // If the filter resulted in zero students (e.g., no one joined "MUN"), show the sad face message
         if (count === 0) {
              displayArea.innerHTML = `<div class="no-data-msg">No Sign Ups For The Club: ${filter} :(</div>`;
         } else {
+             // Otherwise, inject the generated table into the displayArea
              displayArea.innerHTML = output;
         }
     }
+
     window.onload = render;
 </script>
 </body>
