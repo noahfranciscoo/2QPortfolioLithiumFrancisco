@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Add a Movie</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Add a Movie</h2>
+
+    <label>Title:</label>
+    <input type="text" id="mTitle">
+
+    <label>Year:</label>
+    <input type="text" id="mYear">
+
+    <label>Genre:</label>
+    <select id="mGenre">
+        <option>Action</option>
+        <option>Comedy</option>
+        <option>Drama</option>
+        <option>Romance</option>
+        <option>Sci-Fi</option>
+        <option>Horror</option>
+    </select>
+
+    <label>Rating:</label>
+    <div class="star-rating">
+        <span id="star1" onclick="changeStars(1)">&#9733;</span>
+        <span id="star2" onclick="changeStars(2)">&#9733;</span>
+        <span id="star3" onclick="changeStars(3)">&#9733;</span>
+        <span id="star4" onclick="changeStars(4)">&#9733;</span>
+        <span id="star5" onclick="changeStars(5)">&#9733;</span>
+    </div>
+
+    <button onclick="submitMovie()">Add Movie</button>
+
+    <h2 style="margin-top: 30px;">Movie List</h2>
+    <div id="movieDisplayArea"></div>
+</div>
+
+<script>
+    let ratingValue = 0;
+
+    function changeStars(amount) {
+        ratingValue = amount;
+        
+        let s1 = document.getElementById("star1");
+        let s2 = document.getElementById("star2");
+        let s3 = document.getElementById("star3");
+        let s4 = document.getElementById("star4");
+        let s5 = document.getElementById("star5");
+
+        s1.style.color = "#b0b0b0";
+        s2.style.color = "#b0b0b0";
+        s3.style.color = "#b0b0b0";
+        s4.style.color = "#b0b0b0";
+        s5.style.color = "#b0b0b0";
+
+        if (amount >= 1) s1.style.color = "#f5c518";
+        if (amount >= 2) s2.style.color = "#f5c518";
+        if (amount >= 3) s3.style.color = "#f5c518";
+        if (amount >= 4) s4.style.color = "#f5c518";
+        if (amount >= 5) s5.style.color = "#f5c518";
+    }
+
+    function submitMovie() {
+        let titleInput = document.getElementById("mTitle").value;
+        let yearInput = document.getElementById("mYear").value;
+        let genreInput = document.getElementById("mGenre").value;
+        let ratingInput = ratingValue.toString();
+
+        if (titleInput == "" || yearInput == "" || ratingValue == 0) {
+            alert("Please fill in everything and select a rating.");
+            return;
+        }
+
+        let newObj = {
+            title: titleInput,
+            year: yearInput,
+            genre: genreInput,
+            rating: ratingInput
+        };
+
+        let currentStorage = localStorage.getItem("movies");
+        let listArr = [];
+
+        if (currentStorage != null) {
+            listArr = JSON.parse(currentStorage);
+        }
+
+        listArr.push(newObj);
+        
+        let stringifiedData = JSON.stringify(listArr);
+        localStorage.setItem("movies", stringifiedData);
+
+        document.getElementById("mTitle").value = "";
+        document.getElementById("mYear").value = "";
+        document.getElementById("mGenre").value = "Action";
+        changeStars(0);
+
+        renderList();
+    }
+
+    function renderList() {
+        let displayDiv = document.getElementById("movieDisplayArea");
+        displayDiv.innerHTML = "";
+
+        let dbData = localStorage.getItem("movies");
+        if (dbData == null) {
+            return;
+        }
+
+        let parsedMovies = JSON.parse(dbData);
+
+        for (let i = 0; i < parsedMovies.length; i++) {
+            let currentMovie = parsedMovies[i];
+            
+            let itemContainer = document.createElement("div");
+            itemContainer.className = "movie-box";
+
+            let starString = "";
+            let rValue = parseInt(currentMovie.rating);
+
+            for (let j = 1; j <= 5; j++) {
+                if (j <= rValue) {
+                    starString = starString + "<span style='color: #f5c518; font-size: 15px;'>&#9733;</span>";
+                } else {
+                    starString = starString + "<span style='color: #b0b0b0; font-size: 15px;'>&#9733;</span>";
+                }
+            }
+
+            itemContainer.innerHTML = currentMovie.title + " (" + currentMovie.year + ") - " + currentMovie.genre + ", Rating: " + starString;
+            displayDiv.appendChild(itemContainer);
+        }
+    }
+
+    window.onload = function() {
+        renderList();
+    }
+</script>
+</body>
+</html>
