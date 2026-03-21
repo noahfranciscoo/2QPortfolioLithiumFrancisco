@@ -1,71 +1,52 @@
-body {
-    background-color: #d1d3d4;
-    font-family: Arial, sans-serif;
-    padding: 40px;
-}
-
 .form-container {
-    background-color: #e3e4e5;
-    width: 450px;
-    padding: 30px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-h2 {
-    text-align: center;
-    color: #333;
-    margin-top: 0;
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
 }
 
 label {
-    font-weight: bold;
-    font-size: 13px;
     display: block;
-    margin-top: 20px;
-    margin-bottom: 5px;
+    margin-top: 10px;
+    font-weight: bold;
 }
 
-input[type="text"] {
+input, select, button {
     width: 100%;
     padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    margin-top: 5px;
     box-sizing: border-box;
 }
 
-select {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-.star-rating span {
-    font-size: 24px;
-    color: #b0b0b0;
+.star-rating {
+    font-size: 30px;
     cursor: pointer;
-}
-
-button {
-    width: 100%;
-    padding: 12px;
-    background-color: #0066cc;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    font-size: 15px;
-    margin-top: 25px;
-    cursor: pointer;
+    margin: 10px 0;
 }
 
 .movie-box {
-    background-color: #f0f0f0;
-    border: 1px solid #dcdcdc;
-    padding: 12px;
-    margin-top: 15px;
-    border-radius: 5px;
-    font-size: 14px;
-    color: #333;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+.delete-btn {
+    width: auto;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-top: 0;
+}
+
+.delete-btn:hover {
+    background-color: #ddd;
 }
