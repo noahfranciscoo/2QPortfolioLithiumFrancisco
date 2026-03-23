@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Noah Connor C. Francisco">
+    <title>Movie Rating</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="form-container">
+    <h2>Add / Update a Movie Rating</h2>
+
+    <label>Title:</label>
+    <input type="text" id="mTitle">
+
+    <label>Year:</label>
+    <input type="text" id="mYear">
+
+    <label>Genre:</label>
+    <select id="mGenre">
+        <option>Action</option>
+        <option>Comedy</option>
+        <option>Drama</option>
+        <option>Romance</option>
+        <option>Sci-Fi</option>
+        <option>Horror</option>
+    </select>
+
+    <label>Rating:</label>
+    <div class="star-rating">
+        <span id="star1" onclick="changeStars(1)">&#9733;</span>
+        <span id="star2" onclick="changeStars(2)">&#9733;</span>
+        <span id="star3" onclick="changeStars(3)">&#9733;</span>
+        <span id="star4" onclick="changeStars(4)">&#9733;</span>
+        <span id="star5" onclick="changeStars(5)">&#9733;</span>
+    </div>
+
+    <button onclick="submitMovie()">Add Movie</button>
+
+    <h2 style="margin-top: 30px;">Movie List</h2>
+    <div id="movieDisplayArea"></div>
+</div>
+
+<script src="actualjs.js"></script>
+</body>
+</html>

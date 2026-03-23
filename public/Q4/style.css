@@ -1,0 +1,52 @@
+.form-container {
+    max-width: 400px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+}
+
+label {
+    display: block;
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    box-sizing: border-box;
+}
+
+.star-rating {
+    font-size: 30px;
+    cursor: pointer;
+    margin: 10px 0;
+}
+
+.movie-box {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #f9f9f9;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+}
+
+.delete-btn {
+    width: auto;
+    background-color: #eee;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    padding: 2px 8px;
+    border-radius: 3px;
+    margin-top: 0;
+}
+
+.delete-btn:hover {
+    background-color: #ddd;
+}
