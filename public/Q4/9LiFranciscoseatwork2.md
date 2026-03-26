@@ -67,7 +67,7 @@
 
 - Add in css ```position: absolute; top: 66px; left: 200px;``` to .content.
 
-- Guided Question: What is the effect of position: absolute on an element? How is it different from fixed? The effect of the position: absolute on the element is that it moves the ekement based on its previous ancestor. Its different from fixed as in a fixed element, the element is fixed the page, in the sense, that it is permenantly in the positon you set it to. While in absolute positioning, the element move when the user scrolls or goes left or right.
+- Guided Question: What is the effect of position: absolute on an element? How is it different from fixed? The effect of the position: absolute on the element is that it moves the ekement based on its previous ancestor. Its different from fixed as in a fixed element, the element is fixed the page, in the sense, that it is permenantly in the positon you set it to. While in absolute positioning, the element move when the user scrolls or goes left or
 
 ### Step 4 : (Absolute)
 
@@ -77,7 +77,7 @@
 .notice {
     position: absolute;
     top: 60px;
-    left: 400px;
+    left: 300px;
     background: orange;
     padding: 10px;
     z-index: 2;
@@ -86,19 +86,20 @@
 
 - Give .content a z-index: 1.
 
-- Guided Question: Why does the notice appear on top of the content? What happens if you swap the z‑index values?
+- Guided Question: Why does the notice appear on top of the content? What happens if you swap the z‑index values? THe notice appears on top of the content as it has a higher z-index value, if the z-index values of the content and notice were switched, the notice would be "behind" the content element.
+
 
 - Challenge: 
-    * What changes that you have to do on the code that will position .notice box on the top right corner of the .content box? Please write the code on paper as well (both html and css on the part of .notice and .content).
-    * Try to change the position of .content to relative then to fixed. What do you observed each time?
-    * What do you observe on about the effect of z-index on .notice and .content boxes?
+    * What changes that you have to do on the code that will position .notice box on the top right corner of the .content box? Please write the code on paper as well (both html and css on the part of .notice and .content).Answer: 
+    * Try to change the position of .content to relative then to fixed. What do you observed each time? I observed that when I changed it to relative the main content box shifted downwards, and when I switched it to fixed, the content went back to its original area, and became fixed to the page.
+    * What do you observe on about the effect of z-index on .notice and .content boxes? I noticed that the z-index determines the order of which the elements diplay, for example, if the z-index value of .notice is lower than .content, the .notice element will appear behind the .content element.
 
 3. Please answer the following reflection questions (15 minutes)
 
     a. Could you summarize the differences between the CSS position values (static, relative, absolute, fixed)? 
 
-    b. How does absolute positioning depend on its parent element?
+    b. How does absolute positioning depend on its parent element? Absolute positioning depends on its parent element by being positioned relative to the nearest positioned ancestor. This means that the element's position is determined by the position property of its ancestor element.
 
-    c. How do you differentiate sticky from fixed (you can research on sticky)?
+    c. How do you differentiate sticky from fixed (you can research on sticky)? The difference between sticky and fixed is that fixed always stays on the users point of view, even if they scroll. While, sticky acts like a static element, but at a set threshold, it will act as a fixed element.
 
-    d. If you were designing a webpage for a school event, how might you use positioning to highlight important information? Please give concrete examples.
+    d. If you were designing a webpage for a school event, how might you use positioning to highlight important information? Please give concrete examples. I would add banner at the top at the page and has fixed positioning  to show the school events important info, such as date and time of the event, etc.
