@@ -96,7 +96,7 @@
 
 3. Please answer the following reflection questions (15 minutes)
 
-    a. Could you summarize the differences between the CSS position values (static, relative, absolute, fixed)? 
+    a. Could you summarize the differences between the CSS position values (static, relative, absolute, fixed)?  Static is the default positioning of an element,  and it follows normal document flow. Relative  positioning  is relative to element's original position. Absolute positioning is relative to element's nearest positioned ancestor (where it was originally), removes element from normal document flow. Fixed positioning is relative to viewport, removes element from normal document flow
 
     b. How does absolute positioning depend on its parent element? Absolute positioning depends on its parent element by being positioned relative to the nearest positioned ancestor. This means that the element's position is determined by the position property of its ancestor element.
 
