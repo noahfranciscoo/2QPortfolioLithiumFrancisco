@@ -3,10 +3,10 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <meta name="author" content="Sir Roy/Al Mendoza">
+  <meta name="author" content="Your Name / Partner Name">
   <meta name="description" content="testing and debugging">
   <meta name="keywords" content="testing and debugging">
-  <title>CS3 </title>
+  <title>CS3 - Error Logs</title>
   <link href="style.css" rel="stylesheet" type="text/css" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,7 +30,6 @@
       font-weight: bold;
       padding: 10px;
     }
-    
   </style>
 </head>
 
@@ -40,9 +39,10 @@
       <a href="index.html#start">Table</a>
       <a href="index.html#input">Input</a>
       <a href="index.html#output">Output</a>
+      <a href="errorlogs.html">Error Logs</a>
     </nav>
     
-    <h1 style="padding: 30px">Your Name / Section Mar 2026 </h1>
+    <h1 style="padding: 30px">Your Name / Section - Mar 2026</h1>
   </header>
 
   <section id="table">
@@ -56,71 +56,68 @@
       </tr>
       <tr>
         <td> 1 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td> JS line 1 </td> 
+        <td> plotPoint() missing parameters. </td>
+        <td> added (x0, y0, x, y) to function. </td>
       </tr>
       <tr>
         <td> 2 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td> JS line 6 </td> 
+        <td> invalid property "styleleft". </td>
+        <td> changed to "style.left". </td>
       </tr>
       <tr>
         <td> 3 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td> JS line 7 </td> 
+        <td> invalid property "stylebottom". </td>
+        <td> changed to "style.bottom". </td>
       </tr>
       <tr>
         <td> 4 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td> CSS line 49 </td> 
+        <td> .point missing absolute position. </td>
+        <td> added position: absolute. </td>
       </tr>
       <tr>
         <td> 5 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td> CSS line 25 </td> 
+        <td> nav links stack vertically (block). </td>
+        <td> changed to display: inline-block. </td>
       </tr>
       <tr>
         <td> 6 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td> CSS line 19 </td> 
+        <td> nav bar scrolls with page. </td>
+        <td> added position: fixed and top: 0. </td>
       </tr>
       <tr>
         <td> 7 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td> CSS line 32 </td> 
+        <td> space in "nav a :hover" selector. </td>
+        <td> removed space to "nav a:hover". </td>
       </tr>
       <tr>
         <td> 8 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td> CSS line 84 </td> 
+        <td> incorrect sprite image path. </td>
+        <td> changed path to "images/sprites.png". </td>
       </tr>
       <tr>
         <td> 9 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td> index </td> 
+        <td> duplicate ID "output" on section/h2. </td>
+        <td> renamed section ID. </td>
       </tr>
       <tr>
         <td> 10 </td> 
-        <td> </td> 
-        <td> </td>
-        <td> </td>
+        <td> JS line 2 </td> 
+        <td> accessing coordinates as globals. </td>
+        <td> passed values via function arguments. </td>
       </tr>
-     
     </table>
     <hr>
   </section>
   
-   
-  <!--- anchors for socmed site are done with image sprites -->
   <footer>
     <a href="https://facebook.com"> 
     <div class="icon facebook"></div>
@@ -132,7 +129,5 @@
     <div class="icon github"></div>
     </a>
   </footer>
- 
 </body>
-
 </html>
