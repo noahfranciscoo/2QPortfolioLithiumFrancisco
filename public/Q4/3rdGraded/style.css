@@ -11,6 +11,7 @@ body{
   color:royalblue;
   padding: 0;
   margin: 0;
+  padding-top: 60px; /* Added to prevent content from hiding under the fixed nav */
 }
 
 section, header {
@@ -25,17 +26,21 @@ Requirements for the navigation:
 nav {
     width: 100%;
     background-color: #333;
+    position: fixed;    /* Fix: Stays at the top while scrolling */
+    top: 0;             /* Fix: Anchors to the very top */
+    left: 0;
+    z-index: 1000;      /* Ensures it stays above other elements */
 }
 
 nav a {
-    display: block;
+    display: inline-block; /* Fix: Keeps links on one line instead of stacking */
     color: #f2f2f2;
     text-align: center;
     padding: 14px 20px;
     text-decoration: none;
 }
 
-nav a :hover {
+nav a:hover { /* Fix: Removed the space before :hover so the effect triggers */
     background-color: #ddd;
     color: black;
 }
@@ -46,8 +51,10 @@ nav a :hover {
     height: 400px;
     width: 400px;
     border: 1px solid black;
+    background-color: white;
 }
 .point {
+    position: absolute; /* Fix: Necessary for left/bottom styling to work */
     height: 10px;
     width: 10px;
     background-color: red;
@@ -88,7 +95,7 @@ footer a {
     width: 32px;
     height: 32px;
     display: inline-block;
-    background: url('sprites.png') no-repeat;
+    background: url('images/sprites.png') no-repeat; /* Fix: Updated path to images folder */
 }
 .facebook {
     background-position: -226px -129px;
@@ -118,6 +125,11 @@ table{
 th, td, tr{
   padding: 5px;
   border: 1px solid #333;  
+}
+
+.rColor {
+  background-color: navy;
+  color: white;
 }
 
 .rColor {
